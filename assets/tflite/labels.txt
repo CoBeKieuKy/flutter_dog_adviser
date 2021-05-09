@@ -1,0 +1,25 @@
+Akita
+American Staffordshire
+Basset Hound
+Beagle
+Bichon Frise
+Border Collie
+Boston Terrier
+Bulldog
+Chihuahua
+Chow Chow
+Dachshund
+Dobermann
+English Mastiff
+German Shephard
+Golden Retriever
+Great Dane
+Labrador Retriever
+Maltese Dog
+Pomeranian
+Poodle
+Pug
+Rottweiler
+Shih Tzu
+Siberian Husky
+Yorkshire Terrier
