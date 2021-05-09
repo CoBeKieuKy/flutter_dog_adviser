@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_dog_adviser/custom_widgets/appbar_section.dart';
 import 'package:flutter_dog_adviser/custom_widgets/drawer_section.dart';
+import 'package:flutter_dog_adviser/custom_widgets/text_body.dart';
+import 'package:flutter_dog_adviser/custom_widgets/text_subtitle.dart';
 import 'package:flutter_dog_adviser/models/dog/dog.dart';
 import 'package:flutter_dog_adviser/models/dog/dog_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
@@ -51,7 +51,6 @@ class _DogClassificationState extends State<DogClassification> {
       labels: "assets/tflite/labels.txt",
       model: "assets/tflite/graph.lite",
     );
-    print("Result $resultant");
   }
 
   applyModelOnImage(File file) async {
@@ -90,13 +89,7 @@ class _DogClassificationState extends State<DogClassification> {
         child: Column(
           children: [
             Container(
-              child: Text('Pick your dog image by floating button',
-                style: GoogleFonts.elMessiri(
-                  textStyle: Theme.of(context).textTheme.headline5,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              child: TextBody('Pick your dog image by floating button'),
               margin: EdgeInsets.fromLTRB(25, 25, 25, 0),
             ),
 
@@ -113,26 +106,30 @@ class _DogClassificationState extends State<DogClassification> {
                         image: FileImage(File(pickedImage.path)),
                         fit: BoxFit.contain)),
                 ),
+                Container(
+                  padding: EdgeInsets.all(15.0),
+                  child: new LinearPercentIndicator(
+                    width: MediaQuery.of(context).size.width - 30,
+                    animation: true,
+                    lineHeight: 40.0,
+                    animationDuration: 2500,
+                    percent: _percentage_result,
+                    center: new Text("$_name : $_confidence"),
+                    linearStrokeCap: LinearStrokeCap.roundAll,
+                    progressColor: Colors.green,
+                  ),
+                ),
+
                 FlatButton(
                   onPressed: (){
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => DogDetails(dog_item: _foundDog[0]))
                     );
                   },
-                  child: Icon(Icons.add), color: Colors.deepOrange,
-                ),
-                Container(
-                  padding: EdgeInsets.all(15.0),
-                  child: new LinearPercentIndicator(
-                    width: MediaQuery.of(context).size.width - 50,
-                    animation: true,
-                    lineHeight: 20.0,
-                    animationDuration: 2500,
-                    percent: _percentage_result,
-                    center: new Text("Confidence: $_confidence"),
-                    linearStrokeCap: LinearStrokeCap.roundAll,
-                    progressColor: Colors.green,
-                  ),
+                  child: TextSubtitle('$_name'),
+                  color: Colors.yellowAccent,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                  height: 50,
                 ),
               ],
             )

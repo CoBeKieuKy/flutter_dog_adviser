@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dog_adviser/custom_widgets/text_body.dart';
+import 'package:flutter_dog_adviser/custom_widgets/text_foot.dart';
+import 'package:flutter_dog_adviser/custom_widgets/text_subtitle.dart';
+import 'package:flutter_dog_adviser/custom_widgets/text_subtitle2.dart';
+import 'package:flutter_dog_adviser/custom_widgets/text_title.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextSection extends StatelessWidget {
@@ -17,53 +22,11 @@ class TextSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Container(
-          padding: const EdgeInsets.fromLTRB(_hPad, 8.0, _hPad, 0.0),
-          child: Text(
-            _title,
-            style: GoogleFonts.elMessiri(
-              textStyle: Theme.of(context).textTheme.headline3,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.fromLTRB(_hPad, 0.0, _hPad, 4.0),
-          child: Text(
-            _subtitle,
-            style: GoogleFonts.elMessiri(
-              textStyle: Theme.of(context).textTheme.headline5,
-              fontSize: 20,
-              fontWeight: FontWeight.w200,
-            ),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.fromLTRB(_hPad, 0.0, _hPad, 4.0),
-          child: Text(
-            _subtitle2,
-            style: GoogleFonts.elMessiri(
-              textStyle: Theme.of(context).textTheme.headline5,
-              fontSize: 12,
-              fontWeight: FontWeight.w200,
-            ),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.fromLTRB(_hPad, 4.0, _hPad, 4.0),
-          child: Text(
-            _body,
-            style: GoogleFonts.elMessiri(),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.fromLTRB(_hPad, 32.0, _hPad, 4.0),
-          child: Text(
-            _foot,
-            style: GoogleFonts.elMessiri(),
-          ),
-        ),
+        TextTitle(_title),
+        TextSubtitle(_subtitle),
+        Text_Subtitle2(_subtitle2),
+        TextBody(_body),
+        TextFoot(_foot),
       ],
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dog_adviser/custom_widgets/appbar_section.dart';
 import 'package:flutter_dog_adviser/custom_widgets/drawer_section.dart';
+import 'package:flutter_dog_adviser/custom_widgets/text_subtitle.dart';
+import 'package:flutter_dog_adviser/custom_widgets/text_subtitle2.dart';
 import 'package:flutter_dog_adviser/models/dog/dog.dart';
 import 'package:flutter_dog_adviser/models/dog/dog_repository.dart';
 import 'package:get_it/get_it.dart';
@@ -57,17 +59,30 @@ class _DogListState extends State<DogList>{
         itemCount: _dogs.length,
         itemBuilder: (context, index) {
           final dog = _dogs[index];
-          return ListTile(
-            title: Text(dog.dogName),
-            trailing: IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () => _deleteDog(dog),
-              ),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => DogDetails(dog_item: dog,))
-              );
-            },
+          return
+            Card(
+                child: ListTile(
+                  title: TextSubtitle(dog.dogName),
+                  subtitle: Text_Subtitle2(dog.dogTags),
+                  leading: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minWidth: 80,
+                      minHeight: 80,
+                      maxWidth: 80,
+                      maxHeight: 80,
+                    ),
+                    child: Image.asset(dog.dogImage, fit: BoxFit.cover),
+                  ),
+                  // trailing: IconButton(
+                  //   icon: Icon(Icons.delete),
+                  //   onPressed: () => _deleteDog(dog),
+                  // ),
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => DogDetails(dog_item: dog,))
+                    );
+                  },
+                ),
             );
           }
       ),
