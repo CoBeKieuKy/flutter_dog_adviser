@@ -28,6 +28,7 @@ class _DogClassificationState extends State<DogClassification> {
   List _result;
   String _name = "";
   String numbers = '';
+  double _percentage_result= 0.0;
   List<Dog> _foundDog;
   DogRepository _dogRepository = GetIt.I.get();
 
@@ -62,8 +63,9 @@ class _DogClassificationState extends State<DogClassification> {
     setState(() {
       _result = res;
       String str = _result[0]['label'];
+      _percentage_result = (10000.0*_result[0]['confidence']).ceil()/10000.0;
       _name = str;
-      _confidence = _result != null ? ((10000.0*_result[0]['confidence']).ceil()/100.0).toString() + "%" : "";
+      _confidence = _result != null ? (_percentage_result*100.0).toString() + "%" : "";
     });
     _findDog(_name);
   }
@@ -119,6 +121,19 @@ class _DogClassificationState extends State<DogClassification> {
                   },
                   child: Icon(Icons.add), color: Colors.deepOrange,
                 ),
+                Container(
+                  padding: EdgeInsets.all(15.0),
+                  child: new LinearPercentIndicator(
+                    width: MediaQuery.of(context).size.width - 50,
+                    animation: true,
+                    lineHeight: 20.0,
+                    animationDuration: 2500,
+                    percent: _percentage_result,
+                    center: new Text("Confidence: $_confidence"),
+                    linearStrokeCap: LinearStrokeCap.roundAll,
+                    progressColor: Colors.green,
+                  ),
+                ),
               ],
             )
           )
@@ -134,20 +149,6 @@ class _DogClassificationState extends State<DogClassification> {
                   child: Image.asset("assets/images/dog.gif", fit: BoxFit.cover,),
                 ),
               ),
-            // Container(
-            //   padding: EdgeInsets.all(15.0),
-            //   child: new LinearPercentIndicator(
-            //     width: MediaQuery.of(context).size.width - 50,
-            //     animation: true,
-            //     lineHeight: 20.0,
-            //     animationDuration: 2500,
-            //     percent: _result[0]['confidence'],
-            //     center: new Text("Confidence: $_confidence"),
-            //     linearStrokeCap: LinearStrokeCap.roundAll,
-            //     progressColor: Colors.green,
-            //   ),
-            // ),
-            Text("Name: $_name \nConfidence: $_confidence")
             ],
           ),
         ),
