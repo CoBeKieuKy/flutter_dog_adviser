@@ -6,13 +6,13 @@ import 'package:flutter_dog_adviser/custom_widgets/text_section.dart';
 import 'package:flutter_dog_adviser/models/dog/dog.dart';
 
 class DogDetails extends StatelessWidget{
-  final Dog dog_item;
-  DogDetails({Key key, this.dog_item}) : super(key: key);
+  final Dog dogItem;
+  DogDetails({Key key, this.dogItem}) : super(key: key);
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBarSection(),
+      appBar: AppBarSection("Dog Details"),
 
       drawer: SafeArea(
         child: DrawerSection(),
@@ -23,8 +23,8 @@ class DogDetails extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ImageSection(dog_item.dogImage),
-            TextSection(dog_item.dogName,dog_item.dogNation, dog_item.dogTags, dog_item.dogInfo,dog_item.dogStatistics),
+            ImageSection(dogItem.dogImage),
+            TextSection(dogItem.dogName,dogItem.dogNation, dogItem.dogTags, dogItem.dogInfo,dogItem.dogStatistics),
           ],
         ),
       )

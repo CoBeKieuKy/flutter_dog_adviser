@@ -8,7 +8,7 @@ class TextFoot extends StatelessWidget{
   @override
   Widget build (BuildContext context){
     return Container(
-      padding: const EdgeInsets.fromLTRB(16.0, 32.0, 16.0, 4.0),
+      padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0),
       child: Text(
         _foot,
         style: GoogleFonts.elMessiri(),

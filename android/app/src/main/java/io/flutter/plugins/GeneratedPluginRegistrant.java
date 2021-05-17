@@ -15,6 +15,8 @@ import io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry;
 public final class GeneratedPluginRegistrant {
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
     ShimPluginRegistry shimPluginRegistry = new ShimPluginRegistry(flutterEngine);
+    flutterEngine.getPlugins().add(new com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin());
+    flutterEngine.getPlugins().add(new com.whelksoft.flutter_native_timezone.FlutterNativeTimezonePlugin());
     flutterEngine.getPlugins().add(new io.flutter.plugins.flutter_plugin_android_lifecycle.FlutterAndroidLifecyclePlugin());
     flutterEngine.getPlugins().add(new io.flutter.plugins.imagepicker.ImagePickerPlugin());
     flutterEngine.getPlugins().add(new io.flutter.plugins.pathprovider.PathProviderPlugin());

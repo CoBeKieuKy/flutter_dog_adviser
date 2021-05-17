@@ -25,7 +25,10 @@ class SembastDogRepository extends DogRepository{
 
   @override
   Future<List<Dog>> getAllDogs() async {
-    final snapshots = await _store.find(_database);
+    final finder = Finder(sortOrders: [
+      SortOrder('dogName'),
+    ]);
+    final snapshots = await _store.find(_database, finder: finder);
     return snapshots
         .map((snapshot) => Dog.fromMap(snapshot.key, snapshot.value))
         .toList(growable: false);
@@ -33,8 +36,6 @@ class SembastDogRepository extends DogRepository{
 
   @override
   Future<List<Dog>> findDog(String dogName) async{
-    print(dogName);
-
     var finder = Finder(filter: Filter.equals("dogName", dogName));
     final snapshots = await _store.find(_database, finder: finder);
     return snapshots

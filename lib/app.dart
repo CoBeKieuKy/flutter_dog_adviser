@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dog_adviser/database/init_database.dart';
-import 'package:flutter_dog_adviser/screens/dog_details.dart';
 import 'package:flutter_dog_adviser/screens/dog_list.dart';
-
-// class App extends StatefulWidget {
-//   @override
-//   _AppState createState() => _AppState();
-// }
 
 class App extends StatelessWidget{
 
@@ -14,11 +8,11 @@ class App extends StatelessWidget{
     final Future _init =  InitDatabase.initialize();
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       home: FutureBuilder(
         future: _init,
-        builder: (context, snapshot){
-          if (snapshot.connectionState == ConnectionState.done){
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
             return DogList();
           } else {
             return Material(
@@ -27,7 +21,7 @@ class App extends StatelessWidget{
               ),
             );
           }
-        },
+        }
       ),
       theme: ThemeData(
         appBarTheme: AppBarTheme(

@@ -8,12 +8,12 @@ class TextSubtitle extends StatelessWidget{
   @override
   Widget build (BuildContext context){
     return Container(
-      padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0),
+      padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 0),
       child: Text(
         _subtitle,
         style: GoogleFonts.elMessiri(
           textStyle: Theme.of(context).textTheme.headline5,
-          fontSize: 20,
+          fontSize: 16,
           fontWeight: FontWeight.w200,
         ),
       ),

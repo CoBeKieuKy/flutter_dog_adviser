@@ -13,7 +13,7 @@ class TextTitle extends StatelessWidget{
         _title,
         style: GoogleFonts.elMessiri(
           textStyle: Theme.of(context).textTheme.headline3,
-          fontSize: 30,
+          fontSize: 25,
           fontWeight: FontWeight.bold,
         ),
       ),

@@ -14,7 +14,7 @@ class DogList extends StatefulWidget {
 }
 
 class _DogListState extends State<DogList>{
-  DogRepository _dogRepository = GetIt.I.get();
+  DogRepository _dogRepository = GetIt.I.get<DogRepository>();
   List<Dog> _dogs = [];
 
   @override
@@ -28,33 +28,32 @@ class _DogListState extends State<DogList>{
     setState(() => _dogs = dogs);
   }
 
+  _deleteDog(Dog dog) async {
+    await _dogRepository.deleteDog(dog.dogId);
+    _loadDogs();
+  }
+
   _addDog() async {
-    String name ="Yorkshire Terrier";
-    String nation ="England";
+    String name ="Akita";
+    String nation ="Japan";
     String tags ="Friendly, Smart";
-
-    String status ="Life span:	13 - 16 years\nColor:		tan, black, grey\nHeight:		20 - 23 cm\nWeight:	2 - 3.5 kg";
-    String info ="The Yorkshire Terrier \(often shortened as Yorkie\) is one of the smallest dog breeds of the terrier type, and of any dog breed. The breed developed during the 19th century in Yorkshire, England. Yorkshire Terriers are very playful and energetic dogs. Many people who have a Yorkie as a pet have two, because they often have separation anxiety when left alone. Though small, the Yorkshire Terrier is active, very protective, curious, and fond of attention. They are also an easy dog breed to train. This results from their own nature to work without human assistance.";
-
-    final newDog = Dog(dogName: name, dogImage: "assets/images/yorkshire_terrier.jpg", dogNation: nation,
+    String info = "Akita is a large breed of dog originating from the mountainous regions of northern Japan. There are two separate varieties of Akita: a Japanese strain, commonly called Akita Inu (inu means dog in Japanese) or Japanese Akita, and an American strain, known as the Akita or American Akita. The Japanese strain comes in a narrow palette of colors, with all other colors considered atypical of the breed, while the American strain comes in all dog colors. The Akita is a powerful, independent and dominant breed, commonly aloof with strangers but affectionate with family members. As a breed, Akitas are generally hardy.";
+    String status ="Life span: 10 years\nColor:  ginger, red, brindle, or white\nHeight:   64–69 cm\nWeight:   15–18 kg";
+    final newDog = Dog(dogName: name, dogImage: "assets/images/akita.jpg", dogNation: nation,
         dogStatistics: status, dogInfo: info, dogTags: tags);
     await _dogRepository.insertDog(newDog);
 
     _loadDogs();
   }
 
-  _deleteDog(Dog dog) async {
-    await _dogRepository.deleteDog(dog.dogId);
-    _loadDogs();
-  }
-
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBarSection(),
+      appBar: AppBarSection("Dog List"),
 
-      drawer: DrawerSection(),
-
+      drawer: SafeArea(
+        child: DrawerSection(),
+      ),
       body:  ListView.builder(
         itemCount: _dogs.length,
         itemBuilder: (context, index) {
@@ -63,7 +62,11 @@ class _DogListState extends State<DogList>{
             Card(
                 child: ListTile(
                   title: TextSubtitle(dog.dogName),
-                  subtitle: Text_Subtitle2(dog.dogTags),
+                  subtitle: TextSubtitle2(dog.dogTags),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () => _deleteDog(dog),
+                  ),
                   leading: ConstrainedBox(
                     constraints: BoxConstraints(
                       minWidth: 80,
@@ -73,23 +76,18 @@ class _DogListState extends State<DogList>{
                     ),
                     child: Image.asset(dog.dogImage, fit: BoxFit.cover),
                   ),
-                  // trailing: IconButton(
-                  //   icon: Icon(Icons.delete),
-                  //   onPressed: () => _deleteDog(dog),
-                  // ),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => DogDetails(dog_item: dog,))
+                        builder: (context) => DogDetails(dogItem: dog,))
                     );
                   },
                 ),
             );
           }
       ),
-
       floatingActionButton: FloatingActionButton(
-      child: Icon(Icons.add),
-      onPressed: _addDog,
+        child: Icon(Icons.add),
+        onPressed: _addDog,
       ),
     );
   }
