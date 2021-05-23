@@ -1,7 +1,6 @@
 class  Notify{
   int notifyId;
   String notifyTitle;
-  String notifyType;
   String notifyInfo;
   int notifyHour;
   int notifyMin;
@@ -17,7 +16,6 @@ class  Notify{
   Notify({
     this.notifyId,
     this.notifyTitle,
-    this.notifyType,
     this.notifyInfo,
     this.notifyHour,
     this.notifyMin,
@@ -34,7 +32,6 @@ class  Notify{
   Map<String, dynamic> toMap() {
     return {
       'notifyTitle': this.notifyTitle,
-      'notifyType': this.notifyType,
       'notifyInfo': this.notifyInfo,
       'notifyHour': this.notifyHour,
       'notifyMin': this.notifyMin,
@@ -53,7 +50,6 @@ class  Notify{
     return Notify(
       notifyId: id,
       notifyTitle: map['notifyTitle'],
-      notifyType: map['notifyType'],
       notifyInfo: map['notifyInfo'],
       notifyHour: map['notifyHour'],
       notifyMin: map['notifyMin'],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dog_adviser/database/init_database.dart';
-import 'package:flutter_dog_adviser/screens/dog_list.dart';
+import 'package:flutter_dog_adviser/views/dog_list.dart';
 
 class App extends StatelessWidget{
 

@@ -39,7 +39,7 @@ class TextSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
 
             children: [
-              TextSubtitle("Suitable for:"),
+              TextSubtitle("Stats:"),
               TextFoot(_foot),
             ],
           ),

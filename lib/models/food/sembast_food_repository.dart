@@ -32,7 +32,7 @@ class SembastFoodRepository extends FoodRepository{
   @override
   Future<List<Food>> getAllFormulaFoods() async {
     final finder = Finder(sortOrders: [ SortOrder('foodName'),
-    ], filter: Filter.equals("foodType", "Formula food"));
+    ], filter: Filter.equals("foodType", "Formula"));
     final snapshots = await _store.find(_database, finder: finder);
     return snapshots
         .map((snapshot) => Food.fromMap(snapshot.key, snapshot.value))
@@ -41,7 +41,7 @@ class SembastFoodRepository extends FoodRepository{
 
   @override
   Future<List<Food>> getAllRawFoods() async {
-    final finder = Finder(filter: Filter.equals("foodType", "Raw food"),
+    final finder = Finder(filter: Filter.equals("foodType", "Raw"),
         sortOrders: [SortOrder('foodName'),
     ]);
     final snapshots = await _store.find(_database, finder: finder);

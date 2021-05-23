@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_subtitle.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_title.dart';
-import 'package:flutter_dog_adviser/screens/dog_classification.dart';
-import 'package:flutter_dog_adviser/screens/dog_list.dart';
-import 'package:flutter_dog_adviser/screens/food_list.dart';
-import 'package:flutter_dog_adviser/screens/notify_list.dart';
-import 'package:flutter_dog_adviser/screens/schedule_test.dart';
+import 'package:flutter_dog_adviser/views/bmi_input_form.dart';
+import 'package:flutter_dog_adviser/views/bmi_list.dart';
+import 'package:flutter_dog_adviser/views/dog_classification.dart';
+import 'package:flutter_dog_adviser/views/dog_list.dart';
+import 'package:flutter_dog_adviser/views/food_list.dart';
+import 'package:flutter_dog_adviser/views/notify_list.dart';
+import 'package:flutter_dog_adviser/views/train_list.dart';
 
 class DrawerSection extends StatelessWidget {
   @override
@@ -34,7 +36,26 @@ class DrawerSection extends StatelessWidget {
                   builder: (context) => DogClassification()));
             },
           ),
-
+          ListTile(
+            title: TextSubtitle('Check up Dog\'s BMI'),
+            leading: Icon(
+              Icons.check_box,
+            ),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => BMIInputForm()));
+            },
+          ),
+          // ListTile(
+          //   title: TextSubtitle('lIST BMI'),
+          //   leading: Icon(
+          //     Icons.image_search,
+          //   ),
+          //   onTap: () {
+          //     Navigator.of(context).push(MaterialPageRoute(
+          //         builder: (context) => BMIList()));
+          //   },
+          // ),
           ListTile(
             title: TextSubtitle('Dog List'),
             leading: Icon(
@@ -57,17 +78,17 @@ class DrawerSection extends StatelessWidget {
             },
           ),
           ListTile(
-            title: TextSubtitle('Check up your dog'),
+            title: TextSubtitle('Training Dog'),
             leading: Icon(
-              Icons.contacts,
+              Icons.pets,
             ),
             onTap: () {
-              // Navigator.of(context).push(MaterialPageRoute(
-              //     builder: (context) => FoodList()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => TrainList()));
             },
           ),
           ListTile(
-            title: TextSubtitle('Schedule plan'),
+            title: TextSubtitle('Schedule Training'),
             leading: Icon(
               Icons.schedule,
             ),

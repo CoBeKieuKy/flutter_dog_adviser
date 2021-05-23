@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_body.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_foot.dart';
 import 'package:flutter_dog_adviser/models/dog/dog.dart';
-import 'package:flutter_dog_adviser/screens/dog_details.dart';
+import 'package:flutter_dog_adviser/views/dog_details.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class ResultSection extends StatelessWidget{
