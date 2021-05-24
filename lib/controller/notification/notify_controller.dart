@@ -36,6 +36,7 @@ class NotifyController {
   }
 
   updateNotify(Notify notify, List values, TimeOfDay time, String title, String info) async {
+    await deactivate(notify);
     notify.notifyTitle = title;
     notify.notifyInfo = info;
     notify.notifyHour = time.hour;
@@ -100,7 +101,6 @@ class NotifyController {
       await localNotifyManager.scheduleWeeklyNotification(
           notify.t8Id, notify.notifyHour, notify.notifyMin, 7, notify.notifyTitle, notify.notifyInfo);
     }
-    print("Activated!");
   }
 
   deactivate(Notify notify) async{
@@ -118,7 +118,6 @@ class NotifyController {
       await localNotifyManager.deleteNotification(notify.t7Id);
     if(notify.t8Id > 0)
       await localNotifyManager.deleteNotification(notify.t8Id);
-    print("Deactivated!");
   }
 
   deactivateAll() async {

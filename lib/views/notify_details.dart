@@ -154,7 +154,6 @@ class _NotifyDetailsState extends State<NotifyDetails>{
                             iconSize: 40,
                             onPressed: (){
                               selectTime(context);
-                              print(time);
                             },
                           ),
                           padding: EdgeInsets.only(
