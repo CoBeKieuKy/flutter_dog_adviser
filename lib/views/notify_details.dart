@@ -68,7 +68,7 @@ class _NotifyDetailsState extends State<NotifyDetails>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-        appBar: AppBarSection("Notify Details"),
+        appBar: AppBarSection("Training Note Details"),
 
         drawer: SafeArea(
           child: DrawerSection(),
@@ -198,9 +198,9 @@ class _NotifyDetailsState extends State<NotifyDetails>{
                                       content: Text('Please choose day of week')));
                                 }
                                 else {
+                                  await _notifyDetailsController.updateNotify(widget.notifyItem, values, time, title, info);
                                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                       content: Text('Your Notify has been updated')));
-                                  await _notifyDetailsController.updateNotify(widget.notifyItem, values, time, title, info);
                                 }
                               }
                             },
@@ -211,12 +211,12 @@ class _NotifyDetailsState extends State<NotifyDetails>{
                     ),
                     color: Colors.white70,
                   ),
-                  ElevatedButton(
-                      onPressed: (){
-                        _notifyDetailsController.deactivateAll();
-                      },
-                      child: Text("delete all")
-                  ),
+                  // ElevatedButton(
+                  //     onPressed: (){
+                  //       _notifyDetailsController.deactivateAll();
+                  //     },
+                  //     child: Text("delete all")
+                  // ),
                 ],
               ),
             ),

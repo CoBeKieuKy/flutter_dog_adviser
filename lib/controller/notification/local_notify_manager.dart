@@ -27,6 +27,7 @@ class LocalNotifyManager {
 
   Future<void> deleteNotification(int id) async {
     await flutterLocalNotificationsPlugin.cancel(id);
+    print(id);
   }
 
   Future<void> deleteAllNotification() async {
@@ -57,6 +58,7 @@ class LocalNotifyManager {
       payload: 'New Payload',
       matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
     );
+    print(id);
   }
 }
 LocalNotifyManager localNotifyManager = LocalNotifyManager.init();

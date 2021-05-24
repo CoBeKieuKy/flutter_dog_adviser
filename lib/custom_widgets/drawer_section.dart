@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dog_adviser/custom_widgets/image_section.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_subtitle.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_title.dart';
 import 'package:flutter_dog_adviser/views/bmi_input_form.dart';
-import 'package:flutter_dog_adviser/views/bmi_list.dart';
 import 'package:flutter_dog_adviser/views/dog_classification.dart';
 import 'package:flutter_dog_adviser/views/dog_list.dart';
 import 'package:flutter_dog_adviser/views/food_list.dart';
@@ -19,7 +19,12 @@ class DrawerSection extends StatelessWidget {
           Container(
             height: 80.0,
             child: DrawerHeader(
-              child: TextTitle('Dog Adviser'),
+              child: Row(
+                children :[
+                  Image.asset("assets/images/util/dog_icon.png"),
+                  TextTitle('Dog Adviser'),
+                ],
+              ),
               decoration: BoxDecoration(
                 color: Colors.green,
               ),
@@ -78,7 +83,7 @@ class DrawerSection extends StatelessWidget {
             },
           ),
           ListTile(
-            title: TextSubtitle('Training Dog'),
+            title: TextSubtitle('Dog Training'),
             leading: Icon(
               Icons.pets,
             ),

@@ -75,37 +75,30 @@ class NotifyController {
     if(notify.t2Id > 0) {
       await localNotifyManager.scheduleWeeklyNotification(
           notify.t2Id, notify.notifyHour, notify.notifyMin, 1, notify.notifyTitle, notify.notifyInfo);
-      print("done 2");
     }
     if(notify.t3Id > 0){
       await localNotifyManager.scheduleWeeklyNotification(
-          notify.t2Id, notify.notifyHour, notify.notifyMin, 2, notify.notifyTitle, notify.notifyInfo);
-      print("done 3");
+          notify.t3Id, notify.notifyHour, notify.notifyMin, 2, notify.notifyTitle, notify.notifyInfo);
     }
     if(notify.t4Id > 0){
       await localNotifyManager.scheduleWeeklyNotification(
-          notify.t3Id, notify.notifyHour, notify.notifyMin, 3, notify.notifyTitle, notify.notifyInfo);
-      print("done 4");
+          notify.t4Id, notify.notifyHour, notify.notifyMin, 3, notify.notifyTitle, notify.notifyInfo);
     }
     if(notify.t5Id > 0) {
       await localNotifyManager.scheduleWeeklyNotification(
-          notify.t4Id, notify.notifyHour, notify.notifyMin, 4, notify.notifyTitle, notify.notifyInfo);
-      print("done 5");
+          notify.t5Id, notify.notifyHour, notify.notifyMin, 4, notify.notifyTitle, notify.notifyInfo);
     }
     if(notify.t6Id > 0) {
       await localNotifyManager.scheduleWeeklyNotification(
           notify.t6Id, notify.notifyHour, notify.notifyMin, 5, notify.notifyTitle, notify.notifyInfo);
-      print("done 6");
     }
     if(notify.t7Id > 0) {
       await localNotifyManager.scheduleWeeklyNotification(
           notify.t7Id, notify.notifyHour, notify.notifyMin, 6, notify.notifyTitle, notify.notifyInfo);
-      print("done 7");
     }
     if(notify.t8Id > 0) {
       await localNotifyManager.scheduleWeeklyNotification(
           notify.t8Id, notify.notifyHour, notify.notifyMin, 7, notify.notifyTitle, notify.notifyInfo);
-      print("done 8");
     }
     print("Activated!");
   }

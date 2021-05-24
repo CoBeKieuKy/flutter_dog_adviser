@@ -8,13 +8,14 @@ class App extends StatelessWidget{
     final Future _init =  InitDatabase.initialize();
 
     return MaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       home: FutureBuilder(
         future: _init,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return DogList();
-          } else {
+          }
+          else {
             return Material(
               child: Center(
                 child: CircularProgressIndicator(),

@@ -64,7 +64,7 @@ class _BMIInputFormState extends State<BMIInputForm>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBarSection("Dog IBM Input"),
+      appBar: AppBarSection("Dog BMI Input"),
 
       drawer: SafeArea(
         child: DrawerSection(),
@@ -72,133 +72,142 @@ class _BMIInputFormState extends State<BMIInputForm>{
       body:SingleChildScrollView(
         child:Container(
           child: Center(
-            child:Card(
+            child:Padding(
+              padding: EdgeInsets.all(25.0),
               child:Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  TextSubtitle("Select a dog breed"),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  DropdownButton(
-                    value: _selectedDog,
-                    items: _dropdownMenuItems,
-                    onChanged: onChangeDropdownItem,
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  ListTile(
-                    title: const Text('Male'),
-                    leading: Radio<Gender>(
-                      value: Gender.male,
-                      groupValue: _character,
-                      onChanged: (Gender value) {
-                        setState(() {
-                          _character = value;
-                        });
-                      },
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Card(
+                  color: Colors.white70,
+                  child: Column(
+                    children: [
+                    TextSubtitle("Input your dog's stats"),
+                    SizedBox(
+                      height: 20.0,
                     ),
-                  ),
-                  ListTile(
-                    title: const Text('Female'),
-                    leading: Radio<Gender>(
-                      value: Gender.female,
-                      groupValue: _character,
-                      onChanged: (Gender value) {
-                        setState(() {
-                          _character = value;
-                        });
-                      },
+                    DropdownButton(
+                      value: _selectedDog,
+                      items: _dropdownMenuItems,
+                      onChanged: onChangeDropdownItem,
                     ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    ListTile(
+                      title: const Text('Male'),
+                      leading: Radio<Gender>(
+                        value: Gender.male,
+                        groupValue: _character,
+                        onChanged: (Gender value) {
+                          setState(() {
+                            _character = value;
+                          });
+                        },
+                      ),
+                    ),
+                    ListTile(
+                      title: const Text('Female'),
+                      leading: Radio<Gender>(
+                        value: Gender.female,
+                        groupValue: _character,
+                        onChanged: (Gender value) {
+                          setState(() {
+                            _character = value;
+                          });
+                        },
+                      ),
+                    ),
+                    ],
                   ),
-                  Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
+                ),
+
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top:20.0,
+                          bottom: 20.0
+                      ),
+                      child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        validator: (value) {
+                          if (value == null || value.isEmpty || double.parse(value) == 0) {
+                            return 'Please enter weight';
+                          }
+                          setState(() {
+                            weight = double.parse(value);
+                          });
+                          return null;
+                        },
+                        initialValue: '0',
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Dog's Weight (kg)",
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 20.0,
+                        bottom: 20,
+                      ),
+                      child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        validator: (value) {
+                          if (value == null || value.isEmpty || double.parse(value) == 0) {
+                            return 'Please enter height';
+                          }
+                          setState(() {
+                            height = double.parse(value);
+                          });
+                          return null;
+                        },
+                        initialValue: '0',
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Dog's Height (cm)",
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
                         Padding(
-                          padding: EdgeInsets.only(
-                              top:20.0,
-                              bottom: 20.0
-                          ),
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            validator: (value) {
-                              if (value == null || value.isEmpty || double.parse(value) == 0) {
-                                return 'Please enter weight';
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              if (_formKey.currentState.validate()) {
+                                final double dogBMI = ((10 * weight / pow(height/100,2)).ceil())/10;
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => BMIDetails(
+                                      dogItem: _selectedDog,
+                                      dogBMI: dogBMI,
+                                      dogGender: _character.toString().split('.').last,
+                                    )
+                                  )
+                                );
                               }
-                              setState(() {
-                                weight = double.parse(value);
-                              });
-                              return null;
                             },
-                            initialValue: '0',
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Dog's Weight (kg)",
-                            ),
+                            child: Text('Check Up !'),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: 20.0,
-                            bottom: 20,
-                          ),
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            validator: (value) {
-                              if (value == null || value.isEmpty || double.parse(value) == 0) {
-                                return 'Please enter height';
-                              }
-                              setState(() {
-                                height = double.parse(value);
-                              });
-                              return null;
-                            },
-                            initialValue: '0',
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Dog's Height (cm)",
-                            ),
-                          ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 16.0),
-                              child: ElevatedButton(
-                                onPressed: () async {
-                                  if (_formKey.currentState.validate()) {
-                                    final double dogBMI = ((10 * weight / pow(height/100,2)).ceil())/10;
-                                      Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (context) => BMIDetails(
-                                          dogItem: _selectedDog,
-                                          dogBMI: dogBMI,
-                                          dogGender: _character.toString().split('.').last,
-                                        )
-                                      )
-                                    );
-                                  }
-                                },
-                                child: Text('Check Up !'),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
+                    ],
                   ),
+                ),
                 ],
               ),
-              color: Colors.white70,
+              // color: Colors.white70,
             ),
           ),
         ),
