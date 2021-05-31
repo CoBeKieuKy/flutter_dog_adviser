@@ -197,7 +197,7 @@ class _NotifyDetailsState extends State<NotifyDetails>{
                                       content: Text('Please choose day of week')));
                                 }
                                 else {
-                                  await _notifyDetailsController.updateNotify(widget.notifyItem, values, time, title, info);
+                                  await _notifyDetailsController.updateNotify(widget.notifyItem, values, pickedHour, pickedMin, title, info);
                                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                       content: Text('Your Notify has been updated')));
                                 }

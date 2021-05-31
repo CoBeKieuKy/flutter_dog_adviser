@@ -9,16 +9,6 @@ class SembastBMIRepository extends BMIRepository{
   final StoreRef _store = intMapStoreFactory.store("bmi_store");
 
   @override
-  Future<int> insertBMI(BMI bmi) async {
-    return await _store.add(_database, bmi.toMap());
-  }
-
-  @override
-  Future deleteBMI(int bmiId) async{
-    await _store.record(bmiId).delete(_database);
-  }
-
-  @override
   Future<List<BMI>> findDogBMI(String dogName, String gender) async{
     var finder = Finder(filter: Filter.and(
         [

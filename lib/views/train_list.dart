@@ -45,13 +45,6 @@ class _TrainListState extends State<TrainList>{
                 child: ListTile(
                   title: TextSubtitle(train.trainName),
                   subtitle: TextSubtitle2(train.trainFor),
-                  // trailing: IconButton(
-                  //   icon: Icon(Icons.delete),
-                  //   onPressed: () async{
-                  //     await _trainListController.deleteTrain(train);
-                  //     _loadAllTrains();
-                  //   },
-                  // ),
                   leading: ConstrainedBox(
                     constraints: BoxConstraints(
                       minWidth: 80,
@@ -70,13 +63,6 @@ class _TrainListState extends State<TrainList>{
               );
           }
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: Icon(Icons.add),
-      //   onPressed: () async{
-      //     await _trainListController.addTrain();
-      //     _loadAllTrains();
-      //   },
-      // ),
     );
   }
 }

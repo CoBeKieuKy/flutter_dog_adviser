@@ -30,7 +30,7 @@ class TrainDetails extends StatelessWidget{
                   children: [
                     ImageSection(trainItem.trainImage),
                     TextTitle(trainItem.trainName),
-                    TextSubtitle(trainItem.trainFor),
+                    TextSubtitle("For:"+trainItem.trainFor),
                   ],
                 ),
                 color: Colors.white70,

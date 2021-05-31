@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_dog_adviser/models/notify/notify_repository.dart';
 import 'package:flutter_dog_adviser/controller/notification/local_notify_manager.dart';
 import 'package:flutter_dog_adviser/models/notify/notify.dart';
@@ -35,12 +34,12 @@ class NotifyController {
     await _notifyRepository.insertNotify(newNotify);
   }
 
-  updateNotify(Notify notify, List values, TimeOfDay time, String title, String info) async {
+  updateNotify(Notify notify, List values, int hour, int minute, String title, String info) async {
     await deactivate(notify);
     notify.notifyTitle = title;
     notify.notifyInfo = info;
-    notify.notifyHour = time.hour;
-    notify.notifyMin = time.minute;
+    notify.notifyHour = hour;
+    notify.notifyMin = minute;
     notify.t2Id = 0;
     notify.t3Id = 0;
     notify.t4Id = 0;

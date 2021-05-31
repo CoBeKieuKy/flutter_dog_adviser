@@ -9,16 +9,6 @@ class SembastTrainRepository extends TrainRepository{
   final StoreRef _store = intMapStoreFactory.store("train_store");
 
   @override
-  Future<int> insertTrain(Train train) async {
-    return await _store.add(_database, train.toMap());
-  }
-
-  @override
-  Future deleteTrain(int trainId) async{
-    await _store.record(trainId).delete(_database);
-  }
-
-  @override
   Future<List<Train>> getAllTrains() async {
     final finder = Finder(sortOrders: [
       SortOrder('trainName'),

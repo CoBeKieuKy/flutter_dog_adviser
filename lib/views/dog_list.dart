@@ -44,13 +44,6 @@ class _DogListState extends State<DogList>{
                 child: ListTile(
                   title: TextSubtitle(dog.dogName),
                   subtitle: TextSubtitle2(dog.dogTags),
-                  // trailing: IconButton(
-                  //   icon: Icon(Icons.delete),
-                  //   onPressed: () async{
-                  //     await _dogListController.deleteDog(dog);
-                  //     _loadDogs();
-                  //   },
-                  // ),
                   leading: ConstrainedBox(
                     constraints: BoxConstraints(
                       minWidth: 80,
@@ -69,13 +62,6 @@ class _DogListState extends State<DogList>{
             );
           }
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: Icon(Icons.add),
-      //   onPressed: () async{
-      //     await _dogListController.addDog();
-      //     _loadDogs();
-      //   },
-      // ),
     );
   }
 }

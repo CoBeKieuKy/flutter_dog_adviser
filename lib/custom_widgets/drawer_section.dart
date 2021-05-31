@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dog_adviser/custom_widgets/image_section.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_subtitle.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_title.dart';
 import 'package:flutter_dog_adviser/views/bmi_input_form.dart';
@@ -51,16 +50,6 @@ class DrawerSection extends StatelessWidget {
                   builder: (context) => BMIInputForm()));
             },
           ),
-          // ListTile(
-          //   title: TextSubtitle('lIST BMI'),
-          //   leading: Icon(
-          //     Icons.image_search,
-          //   ),
-          //   onTap: () {
-          //     Navigator.of(context).push(MaterialPageRoute(
-          //         builder: (context) => BMIList()));
-          //   },
-          // ),
           ListTile(
             title: TextSubtitle('Dog List'),
             leading: Icon(

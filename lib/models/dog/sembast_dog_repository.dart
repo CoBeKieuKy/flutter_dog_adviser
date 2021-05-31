@@ -9,21 +9,6 @@ class SembastDogRepository extends DogRepository{
   final StoreRef _store = intMapStoreFactory.store("dog_store");
 
   @override
-  Future<int> insertDog(Dog dog) async {
-    return await _store.add(_database, dog.toMap());
-  }
-
-  @override
-  Future updateDog(Dog dog) async {
-    await _store.record(dog.dogId).update(_database, dog.toMap());
-  }
-
-  @override
-  Future deleteDog(int dogId) async{
-    await _store.record(dogId).delete(_database);
-  }
-
-  @override
   Future<List<Dog>> getAllDogs() async {
     final finder = Finder(sortOrders: [
       SortOrder('dogName'),

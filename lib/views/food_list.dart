@@ -67,13 +67,6 @@ class _FoodListState extends State<FoodList>{
                 child: ListTile(
                   title: TextSubtitle(food.foodName),
                   subtitle: TextSubtitle2(food.foodType),
-                  // trailing: IconButton(
-                  //   icon: Icon(Icons.delete),
-                  //   onPressed: () async{
-                  //     await _foodListController.deleteFood(food);
-                  //     _loadAllFoods();
-                  //   },
-                  // ),
                   leading: ConstrainedBox(
                     constraints: BoxConstraints(
                       minWidth: 80,
@@ -92,13 +85,6 @@ class _FoodListState extends State<FoodList>{
               );
           }
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: Icon(Icons.add),
-      //   onPressed: () async{
-      //     await _foodListController.addFood();
-      //     _loadAllFoods();
-      //   },
-      // ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
