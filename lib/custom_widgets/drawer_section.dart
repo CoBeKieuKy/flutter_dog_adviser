@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_subtitle.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_title.dart';
-import 'package:flutter_dog_adviser/views/bmi_input_form.dart';
 import 'package:flutter_dog_adviser/views/dog_classification.dart';
 import 'package:flutter_dog_adviser/views/dog_list.dart';
 import 'package:flutter_dog_adviser/views/food_list.dart';
 import 'package:flutter_dog_adviser/views/notify_list.dart';
 import 'package:flutter_dog_adviser/views/train_list.dart';
+import 'package:flutter_dog_adviser/views/user_dog_list.dart';
 
 class DrawerSection extends StatelessWidget {
   @override
@@ -41,13 +41,13 @@ class DrawerSection extends StatelessWidget {
             },
           ),
           ListTile(
-            title: TextSubtitle('Check up Dog\'s BMI'),
+            title: TextSubtitle('User Dogs Profile'),
             leading: Icon(
               Icons.check_box,
             ),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => BMIInputForm()));
+                  builder: (context) => UserDogList()));
             },
           ),
           ListTile(

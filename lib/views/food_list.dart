@@ -5,6 +5,7 @@ import 'package:flutter_dog_adviser/custom_widgets/drawer_section.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_subtitle.dart';
 import 'package:flutter_dog_adviser/custom_widgets/text_subtitle2.dart';
 import 'package:flutter_dog_adviser/models/food/food.dart';
+import 'package:flutter_dog_adviser/views/food_calculator.dart';
 import 'food_details.dart';
 
 class FoodList extends StatefulWidget {
@@ -84,6 +85,13 @@ class _FoodListState extends State<FoodList>{
                 ),
               );
           }
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => FoodCalculator()));
+        },
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

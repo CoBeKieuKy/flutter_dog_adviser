@@ -8,6 +8,12 @@ import 'package:flutter_dog_adviser/models/notify/notify_repository.dart';
 import 'package:flutter_dog_adviser/models/notify/sembast_notify_repository.dart';
 import 'package:flutter_dog_adviser/models/train/sembast_train_repository.dart';
 import 'package:flutter_dog_adviser/models/train/train_repository.dart';
+import 'package:flutter_dog_adviser/models/profile/sembast_profile_repository.dart';
+import 'package:flutter_dog_adviser/models/profile/profile_repository.dart';
+import 'package:flutter_dog_adviser/models/user_dog/sembast_user_dog_repository.dart';
+import 'package:flutter_dog_adviser/models/user_dog/user_dog_repository.dart';
+
+
 import 'package:get_it/get_it.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
@@ -26,6 +32,9 @@ class InitDatabase {
     GetIt.I.registerLazySingleton<NotifyRepository>(() => SembastNotifyRepository());
     GetIt.I.registerLazySingleton<TrainRepository>(() => SembastTrainRepository());
     GetIt.I.registerLazySingleton<BMIRepository>(() => SembastBMIRepository());
+    GetIt.I.registerLazySingleton<ProfileRepository>(() => SembastProfileRepository());
+    GetIt.I.registerLazySingleton<UserDogRepository>(() => SembastUserDogRepository());
+
   }
 
   static Future _initSembast() async {
@@ -251,6 +260,10 @@ class InitDatabase {
             "foodInfo":"Avocados should never be consumed by dogs.\nThis is because they contain a toxin called persin, which is known to be very poisonous to dogs. It may lead to fluid accumulation in their lungs and chest, which can cause breathing difficulties, oxygen deprivation and even death.\nPersin is found in all parts of the avocado, including the fruit, pit, leaves and bark. Thus, you should always keep avocados away from your dog.",
             "foodEdible":"Inedible",
             "foodFor":"None",
+            "calories": 0.0,
+            "proteins": 0.0,
+            "carbs": 0.0,
+            "fats": 0.0,
           });
           await foodStore.add(database, {
             "foodName": "Banana",
@@ -259,6 +272,10 @@ class InitDatabase {
             "foodInfo":"Dogs can eat bananas in moderation.\nBananas are high in fiber and many vitamins and minerals. Some people also claim that bananas help relieve nausea in dogs, but this has not been proven by scientific evidence.\nYou can mix some mashed banana with your dog’s regular food or feed him a slice or two as an occasional treat.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 22.0,
+            "proteins": 0.275,
+            "carbs": 5.75,
+            "fats": 0.075,
           });
           await foodStore.add(database, {
             "foodName": "Beef",
@@ -267,6 +284,10 @@ class InitDatabase {
             "foodInfo":"Lean beef is safe for dogs to eat.\nIn fact, beef is a common ingredient in many dog foods. It’s an excellent source of protein and many important vitamins and minerals that your dog needs for overall health.\nThe beef that you feed to your dog should be plain, without any added sauces or seasonings. These often contain ingredients that may be harmful to your dog, such as salt.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 53.4,
+            "proteins": 2.5,
+            "carbs": 0.0,
+            "fats": 0.8,
           });
           await foodStore.add(database, {
             "foodName": "Bread",
@@ -275,6 +296,10 @@ class InitDatabase {
             "foodInfo":"Plain white or whole grain bread is safe for most dogs to eat as an occasional treat.\nBefore feeding your dog bread, make sure it doesn’t contain any extra ingredients, such as raisins, which could be potentially harmful.\nAdditionally, keep in mind that bread, along with other foods, adds extra calories to your dog’s diet and may cause weight gain if he eats too much.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 66.0,
+            "proteins": 4.4,
+            "carbs": 12.25,
+            "fats": 0.8,
           });
           await foodStore.add(database, {
             "foodName": "Broccoli",
@@ -283,6 +308,10 @@ class InitDatabase {
             "foodInfo":"Dogs can eat raw or cooked broccoli in moderation.\nBroccoli is a low-calorie vegetable that contains high amounts of many nutrients, making it a very healthy snack for your dog.\nHowever, broccoli contains isothiocyanates, which are compounds that may irritate your dog’s digestive system if he eats too much. Thus, you should only feed broccoli to your dog as an occasional snack.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 8.8,
+            "proteins": 0.88,
+            "carbs": 1.76,
+            "fats": 0.8,
           });
           await foodStore.add(database, {
             "foodName": "Coffee",
@@ -291,6 +320,10 @@ class InitDatabase {
             "foodInfo":"Coffee is dangerous for dogs to consume due to their caffeine contents.\nCaffeine stimulates your dog’s nervous system, which can lead to a number of symptoms, including hyperactivity, vomiting, diarrhea, elevated heart rate, seizures and tremors.\nLung failure and abnormal heart rhythm may result from too much caffeine, which can ultimately lead to death.\nEven small amounts of caffeine can cause adverse effects in dogs, so you should always keep coffee and tea out of your dog’s reach.",
             "foodEdible":"Inedible",
             "foodFor":"None",
+            "calories": 0.0,
+            "proteins": 0.0,
+            "carbs": 0.0,
+            "fats": 0.0,
           });
           await foodStore.add(database, {
             "foodName": "Carrot",
@@ -299,6 +332,10 @@ class InitDatabase {
             "foodInfo":"Both raw and cooked carrots are safe for your dog to eat.\nCarrots are low in calories and a good source of vitamins, minerals and fiber. This makes them a very healthy food for your dog to snack on.\nBefore feeding carrots to your dog, make sure to cut them into bite-size pieces to prevent choking.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 9.68,
+            "proteins": 0.088,
+            "carbs": 2.64,
+            "fats": 0.0,
           });
           await foodStore.add(database, {
             "foodName": "Cheese",
@@ -307,6 +344,10 @@ class InitDatabase {
             "foodInfo":"Cheese is safe for most dogs to eat in small quantities.\nDue to the fat and lactose content of cheese, some dogs may have digestive symptoms, such as stomach pain and diarrhea, after eating it.\nTo avoid unpleasant symptoms, it is best to introduce cheese into your dog’s diet gradually. It may also help to only feed your dog low-fat cheeses, such as mozzarella.",
             "foodEdible":"Limit",
             "foodFor":"All kinds",
+            "calories": 100.5,
+            "proteins": 6.25,
+            "carbs": 0.325,
+            "fats": 8.25,
           });
           await foodStore.add(database, {
             "foodName": "Chicken",
@@ -315,6 +356,10 @@ class InitDatabase {
             "foodInfo":"Cooked chicken is a healthy food that is safe for most dogs to eat.\nChicken is one of the most common ingredients used in dog foods, as it is an excellent source of protein, which your dog needs to stay healthy. You can feed your dog chicken on its own or combine it with his regular food.\nIt is worth noting that you should always remove chicken from the bone before feeding it to your dog. Chicken bones pose a choking hazard and may puncture his digestive tract.\nAdditionally, it is important to avoid feeding your dog raw chicken to prevent a Salmonella infection.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 27.28,
+            "proteins": 5.28,
+            "carbs": 0.0,
+            "fats": 0.088,
           });
           await foodStore.add(database, {
             "foodName": "Chocolate",
@@ -323,6 +368,10 @@ class InitDatabase {
             "foodInfo":"It is widely known that dogs should never eat chocolate.\nThis is because chocolate contains theobromine and caffeine, two stimulants that dogs cannot efficiently metabolize.\nIf your dog eats chocolate, he may exhibit symptoms like vomiting, diarrhea and dehydration. These symptoms may lead to more serious complications, such as internal bleeding, muscle tremors, seizures and death.\nDarker and less sweet varieties of chocolate, such as cocoa powder and unsweetened baker’s chocolate, are more poisonous to dogs than sweetened varieties, such as milk chocolate.\nNevertheless, do not feed your dog any type of chocolate.",
             "foodEdible":"Inedible",
             "foodFor":"None",
+            "calories": 0.0,
+            "proteins": 0.0,
+            "carbs": 0.0,
+            "fats": 0.0,
           });
           await foodStore.add(database, {
             "foodName": "Corn",
@@ -331,6 +380,10 @@ class InitDatabase {
             "foodInfo":"Dogs can eat corn in moderate amounts.\nCorn is a good source of some vitamins and minerals and common ingredient in many types of dog food. A tablespoon or two of corn per day is an appropriate serving size for dogs.\nAlthough plain, cooked corn kernels are safe for dogs, you should never feed your dog corn on the cob. The cob is a choking hazard and could lead to intestinal obstruction if consumed.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 24.0,
+            "proteins": 0.85,
+            "carbs": 5.25,
+            "fats": 0.375,
           });
           await foodStore.add(database, {
             "foodName": "Egg",
@@ -339,6 +392,10 @@ class InitDatabase {
             "foodInfo":"Cooked eggs are perfectly safe and nutritious for dogs to eat.\nOne medium egg provides some of almost every vitamin and mineral, plus lots of protein. There are claims that eggs may also help relieve nausea in dogs, although there is no scientific evidence behind this claim.\nIt is important to note that you should avoid feeding raw eggs to your dog. While dogs typically do not get sick from eating raw eggs, bacteria, such as Salmonella, can spread from the dog to its human owners, increasing their risk of infection.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 52.8,
+            "proteins": 4.84,
+            "carbs": 0.176,
+            "fats": 3.696,
           });
           await foodStore.add(database, {
             "foodName": "Garlic",
@@ -347,6 +404,10 @@ class InitDatabase {
             "foodInfo":"Garlic contains chemicals called thiosulfates, which are toxic to dogs. Thiosulfates may damage your dog’s red blood cells and lead to anemia. Garlic consumption may also lead to symptoms like vomiting and diarrhea in dogs.\nIn severe cases, dogs may need a blood transfusion if they consume high amounts of garlic. Thus, it is important to avoid feeding garlic to your dog, even in small amounts.",
             "foodEdible":"Inedible",
             "foodFor":"None",
+            "calories": 0.0,
+            "proteins": 0.0,
+            "carbs": 0.0,
+            "fats": 0.0,
           });
           await foodStore.add(database, {
             "foodName": "Grape",
@@ -355,6 +416,10 @@ class InitDatabase {
             "foodInfo":"You should never feed grapes or raisins to your dog.Grapes and raisins contain toxic compounds that are harmful to dogs. They have the potential to lead to rapid kidney failure and death.\nEven small amounts of grapes and raisins can make your dog sick, so it’s important to avoid giving them to your dog altogether.",
             "foodEdible":"Inedible",
             "foodFor":"None",
+            "calories": 0.0,
+            "proteins": 0.0,
+            "carbs": 0.0,
+            "fats": 0.0,
           });
           await foodStore.add(database, {
             "foodName": "Lemon",
@@ -363,6 +428,10 @@ class InitDatabase {
             "foodInfo":"Lemons and limes can be toxic to your dog.\nThis is because the skins of lemons and limes contain a substance called psoralen, which can cause dogs to have gastrointestinal symptoms like vomiting and diarrhea.\nIf very large amounts of psoralen are consumed by dogs, more severe symptoms, such as muscle tremors, difficulty walking, liver failure and death, can result.",
             "foodEdible":"Inedible",
             "foodFor":"None",
+            "calories": 0.0,
+            "proteins": 0.0,
+            "carbs": 0.0,
+            "fats": 0.0,
           });
           await foodStore.add(database, {
             "foodName": "Milk",
@@ -371,6 +440,10 @@ class InitDatabase {
             "foodInfo":"You should prevent your dog from drinking too much milk.\nLactose intolerance is common in dogs, which may cause loose stools, gas, vomiting, stomach pain and diarrhea.\nSome dogs are able to tolerate small quantities of milk as an occasional treat, but they should not drink more than a few tablespoons of milk per day.",
             "foodEdible":"Limit",
             "foodFor":"All kinds",
+            "calories": 10.5,
+            "proteins": 0.85,
+            "carbs": 1.25,
+            "fats": 0.25,
           });
           await foodStore.add(database, {
             "foodName": "Mushroom",
@@ -379,6 +452,10 @@ class InitDatabase {
             "foodInfo":"Store-bought mushrooms, such as portobello mushrooms, are safe for dogs to eat.\nHowever, only feed your dog plain mushrooms that have not been combined with extra ingredients, such as garlic and onions, that may have adverse effects in dogs.\nAdditionally, it is worth noting that some wild mushrooms are toxic to your dog and may cause mushroom poisoning.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 5.5,
+            "proteins": 0.775,
+            "carbs": 0.825,
+            "fats": 0.075,
           });
           await foodStore.add(database, {
             "foodName": "Onion",
@@ -387,6 +464,10 @@ class InitDatabase {
             "foodInfo":"You should never feed your dog onions.\nOnions contain N-propyl disulfide, a compound that is toxic to dogs. It can damage your dog’s red blood cells, reducing their ability to carry oxygen through the body. This often results in a condition called anemia.\nAnemia in dogs is characterized by a variety of symptoms, including lethargy, weakness, decreased appetite and fainting. In severe cases, dogs with anemia may need a blood transfusion.\nIt is important to note that all components and forms of onions are toxic to dogs, even the leaves, juice and processed powders, such as onion powder.",
             "foodEdible":"Inedible",
             "foodFor":"None",
+            "calories": 0.0,
+            "proteins": 0.0,
+            "carbs": 0.0,
+            "fats": 0.0,
           });
           await foodStore.add(database, {
             "foodName": "Pork",
@@ -395,6 +476,10 @@ class InitDatabase {
             "foodInfo":"Cooked pork without added spices, seasonings or sauces is safe for dogs to eat.\nHowever, you should never feed your dog raw or undercooked pork to prevent a bacterial infection, which can make your dog sick.\nFurthermore, processed forms of pork, such as ham and bacon, should never be fed to dogs. They’re often extremely high in salt, which can be harmful to dogs.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 38.72,
+            "proteins": 4.4,
+            "carbs": 0.0,
+            "fats": 1.76,
           });
           await foodStore.add(database, {
             "foodName": "Potato",
@@ -403,6 +488,10 @@ class InitDatabase {
             "foodInfo":"Dogs can eat plain potatoes that have been cooked.\nHowever, you should never feed your dog raw potatoes. Raw potatoes contain solanine, a compound that is toxic to dogs. Cooking potatoes reduces their solanine levels.\nPotatoes should only be fed to dogs in small amounts, as their high carbohydrate content may cause dogs to gain weight if they eat them in large quantities.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 19.36,
+            "proteins": 0.88,
+            "carbs": 4.4,
+            "fats": 0.0,
           });
           await foodStore.add(database, {
             "foodName": "Rice",
@@ -411,6 +500,10 @@ class InitDatabase {
             "foodInfo":"Dogs can eat plain and cooked brown or white rice.\nRice is very easy for dogs to digest and may help relieve an upset stomach.\nYou can feed rice to your dog on its own or combined with a little bit of chicken or turkey for extra protein.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 90.64,
+            "proteins": 1.76,
+            "carbs": 19.36,
+            "fats": 0.088,
           });
           await foodStore.add(database, {
             "foodName": "Salmon",
@@ -419,6 +512,10 @@ class InitDatabase {
             "foodInfo":"Cooked, boneless salmon is a safe and healthy food for your dog.\nSalmon is a great source of omega-3 fatty acids, which are known to reduce inflammation and may help keep your dog’s skin and fur healthy.\nHowever, you should avoid feeding raw salmon to your dog. It may contain a parasite that is known to cause salmon poisoning disease, which can be fatal.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 45.76,
+            "proteins": 4.928,
+            "carbs": 0.0,
+            "fats": 2.728,
           });
           await foodStore.add(database, {
             "foodName": "Shrimp",
@@ -427,6 +524,10 @@ class InitDatabase {
             "foodInfo":"You can feed plain, cooked shrimp to your dog.\nShrimp is a healthy treat for dogs, as it’s an excellent source of protein and provides a significant amount of vitamins and minerals.\nHowever, you should avoid feeding raw shrimp to your dog, as it may contain harmful bacteria that could make him sick. Always make sure to remove the shell from shrimp to prevent your dog from choking.",
             "foodEdible":"Edible",
             "foodFor":"All kinds",
+            "calories": 24.75,
+            "proteins": 6.0,
+            "carbs": 0.05,
+            "fats": 0.075,
           });
           await foodStore.add(database, {
             "foodName": "Tomato",
@@ -435,6 +536,10 @@ class InitDatabase {
             "foodInfo":"It’s okay to feed your dog tomatoes as an occasional treat, as long as they are ripe.\nGreen tomatoes, on the other hand, may contain small amounts of tomatine, a toxic glycoalkaloid. While green tomatoes are not toxic to people, anecdotal evidence suggests it may harm dogs.\nDogs that consume too much tomatine from tomatoes may experience nausea, an abnormal heart rate, muscle weakness and difficulty breathing.",
             "foodEdible":"Limit",
             "foodFor":"All kinds",
+            "calories": 4.25,
+            "proteins": 0.225,
+            "carbs": 0.975,
+            "fats": 0.05,
           });
           await foodStore.add(database, {
             "foodName": "Wellness Puppy Food",
@@ -443,6 +548,10 @@ class InitDatabase {
             "foodInfo":"Wellness Puppy gets the bulk of its animal protein from fresh chicken and chicken meal. Our dry matter label analysis reveals the recipe contains 32% protein, 20% fat and 40% estimated carbs… which produces a fat-to-protein ratio of about 62%.\nAn exceptional formula. Contains just the right amount of calcium to make it safe for all puppy breeds. Highly recommended.",
             "foodEdible":"Edible",
             "foodFor":"Puppy",
+            "calories": 95.5,
+            "proteins": 5.1,
+            "carbs": 6.375,
+            "fats": 3.18,
           });
           await foodStore.add(database, {
             "foodName": "Purina Pro Plan",
@@ -451,6 +560,10 @@ class InitDatabase {
             "foodInfo":"This Purina Pro Plan puppy product derives the bulk of its animal protein from from poultry by-product meal. Our dry matter label analysis reveals the recipe contains 32% protein, 20% fat and 40% estimated carbs… with a fat-to-protein ratio of about 64%.\nPro Plan is one of the brands most often mentioned when we interview veterinary professionals.\nWhat’s more… every Pro Plan product meets the strict guidelines recommended by the World Small Animal Veterinary Association.\nA top choice. Highly recommended.",
             "foodEdible":"Edible",
             "foodFor":"Puppy",
+            "calories": 95.25,
+            "proteins": 6.585,
+            "carbs": 8.23,
+            "fats": 4.12,
           });
           await foodStore.add(database, {
             "foodName": "Blue Buffalo",
@@ -459,6 +572,10 @@ class InitDatabase {
             "foodInfo":"This Blue Buffalo puppy product derives the majority of its meat protein from fresh chicken and chicken meal. Our dry matter label analysis reveals the recipe contains 30% protein, 18% fat and 44% estimated carbs… creating a fat-to-protein ratio of about 59%.\nBlue Life Protection offers 4 puppy recipes. All are nutrient-balanced, affordable and easy to recommend.",
             "foodEdible":"Edible",
             "foodFor":"Puppy",
+            "calories": 98.0,
+            "proteins": 7.5,
+            "carbs": 9.0,
+            "fats": 5.25,
           });
           await foodStore.add(database, {
             "foodName": "Iams ProActive",
@@ -467,6 +584,10 @@ class InitDatabase {
             "foodInfo":"Iams ProActive Health Smart Puppy takes the dominant share of its meat protein from fresh chicken and chicken by-product meal. Our dry matter label analysis reveals the recipe contains 32% protein, 19% fat and 40% estimated carbs… resulting in a fat-to-protein ratio of about 60%.\nA classic, grain-inclusive puppy option containing fish oil to help create a healthy coat and build strong joints. It’s easy on the wallet, too. Highly recommended.",
             "foodEdible":"Edible",
             "foodFor":"Puppy",
+            "calories": 96.25,
+            "proteins": 5.585,
+            "carbs": 8.0,
+            "fats": 5.69,
           });
           await foodStore.add(database, {
             "foodName": "Victor Pro Food",
@@ -475,6 +596,10 @@ class InitDatabase {
             "foodInfo":"Victor Purpose Nutra Pro gets the largest portion of its animal protein from chicken meal and blood meal. Our dry matter label analysis reveals the recipe contains 42% protein, 20% fat and 31% estimated carbs… which produces a fat-to-protein ratio of about 47%.\nAn economical grain-inclusive option… ideal for those feeding either (or both) puppies and adults in the same home. Highly recommended.",
             "foodEdible":"Edible",
             "foodFor":"Puppy",
+            "calories": 101.0,
+            "proteins": 8.95,
+            "carbs": 6.75,
+            "fats": 10.0,
           });
           await foodStore.add(database, {
             "foodName": "Now Fresh Food",
@@ -483,6 +608,10 @@ class InitDatabase {
             "foodInfo":"Now Fresh Large Breed Adult contains balanced proteins and fats from turkey, salmon and duck. Contains antioxidants found in fruits and vegetables such as spinach, cranberries, pumpkin, blackberries, and carrots. Great for building a strong immune system to help fight disease.\nRecommended for dogs over 50 pounds and between 15 months and 5 years of age. Contains extra nutrients such as glucosamine and chondroitin for hip and joint care for larger breed dogs.",
             "foodEdible":"Edible",
             "foodFor":"Adult dog",
+            "calories": 97.25,
+            "proteins": 7.85,
+            "carbs": 8.45,
+            "fats": 4.1,
           });
           await foodStore.add(database, {
             "foodName": "Blue Buffalo Wild",
@@ -491,6 +620,10 @@ class InitDatabase {
             "foodInfo":"Blue Buffalo Wilderness Large Breed Chicken is a great option for those looking for higher protein and an optimal blend of calcium, phosphorus and essential vitamins to help keep bones strong.\nOmega-3 and 6 fatty acids found in fish meal and flaxseed ensure a healthy coat. An ideal blend of protein, fat and carbohydrates are also included to assist your large breed dog in keeping a healthy weight. Never any grains or gluten and no artificial colors, flavors or preservatives.",
             "foodEdible":"Edible",
             "foodFor":"Adult dog",
+            "calories": 95.69,
+            "proteins": 7.45,
+            "carbs": 6.59,
+            "fats": 4.57,
           });
           await foodStore.add(database, {
             "foodName": "Merrick Backcountry",
@@ -499,6 +632,10 @@ class InitDatabase {
             "foodInfo":"Merrick Backcountry Raw Infused Large Breed recipe contains added glucosamine and chondroitin to help support healthy hip and joint function, essential for large breed dogs. Omega fatty acids from salmon oil help ensure a healthy skin and coat.\nA unique raw-infused kibble recipe loaded with protein. Antioxidant-rich fruits and vegetables like sweet potatoes, apples and blueberries are also included to boost your dog’s immune system.",
             "foodEdible":"Edible",
             "foodFor":"Adult dog",
+            "calories": 92.23,
+            "proteins": 6.5,
+            "carbs": 8.0,
+            "fats": 4.0,
           });
           await foodStore.add(database, {
             "foodName": "Orijen Six Fish",
@@ -507,6 +644,10 @@ class InitDatabase {
             "foodInfo":"From its founding, Champion Petfoods, the fabled maker of Orijen, has always favored and touted a meat-based, “biologically appropriate” canine diet… a proven, balanced formula which makes this food a top choice for large breed dogs. Highly recommended.",
             "foodEdible":"Edible",
             "foodFor":"Adult dog",
+            "calories": 99.0,
+            "proteins": 7.46,
+            "carbs": 7.1,
+            "fats": 6.5,
           });
           await foodStore.add(database, {
             "foodName": "Eagle Pack Food",
@@ -515,6 +656,10 @@ class InitDatabase {
             "foodInfo":"Eagle Pack Adult Large and Giant Breed is specially formulated with the right amount of fat, protein and carbohydrates to help larger dogs maintain a healthy weight. Dual animal proteins also help provide lean muscle mass.\nThis formula contains no corn, wheat, or meat by-products of any kind and has no artificial colors, flavors or preservatives. Perfectly balanced nutrition for dogs over 50 pounds.",
             "foodEdible":"Edible",
             "foodFor":"Adult dog",
+            "calories": 94.25,
+            "proteins": 7.01,
+            "carbs": 8.45,
+            "fats": 5.46,
           });
 
           //Init data for train

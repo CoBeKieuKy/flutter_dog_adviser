@@ -44,6 +44,7 @@ dependencies:
   rxdart: ^0.27.0
   flutter_native_timezone: ^1.0.10
   weekday_selector: ^1.0.0
+  fl_chart: ^0.36.1
 
 dev_dependencies:
   flutter_test:

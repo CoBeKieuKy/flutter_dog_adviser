@@ -22,14 +22,4 @@ class SembastBMIRepository extends BMIRepository{
         .map((snapshot) => BMI.fromMap(snapshot.key, snapshot.value))
         .toList(growable: false);
   }
-
-  Future<List<BMI>> getAllBMIs() async {
-    final finder = Finder(sortOrders: [
-      SortOrder('dogName'),
-    ]);
-    final snapshots = await _store.find(_database, finder: finder);
-    return snapshots
-        .map((snapshot) => BMI.fromMap(snapshot.key, snapshot.value))
-        .toList(growable: false);
-  }
 }

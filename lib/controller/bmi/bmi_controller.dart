@@ -8,8 +8,4 @@ class BMIController {
   findDogBMI(dogName, gender) async {
     return await _bmiRepository.findDogBMI(dogName, gender);
   }
-
-  getAllBMIs() async{
-    return _bmiRepository.getAllBMIs();
-  }
 }

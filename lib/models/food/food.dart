@@ -6,6 +6,11 @@ class Food {
   String foodInfo;
   String foodEdible;
   String foodFor;
+  double calories;
+  double proteins;
+  double carbs;
+  double fats;
+
 
   Food({
     this.foodId,
@@ -15,6 +20,10 @@ class Food {
     this.foodInfo,
     this.foodEdible,
     this.foodFor,
+    this.calories,
+    this.proteins,
+    this.carbs,
+    this.fats,
   });
 
   Map<String, dynamic> toMap() {
@@ -25,6 +34,10 @@ class Food {
       'foodInfo': this.foodInfo,
       'foodEdible': this.foodEdible,
       'foodFor': this.foodFor,
+      'calories': this.calories,
+      'proteins': this.proteins,
+      'carbs': this.carbs,
+      'fats': this.fats,
     };
   }
 
@@ -37,6 +50,10 @@ class Food {
       foodEdible: map['foodEdible'],
       foodInfo: map['foodInfo'],
       foodFor: map['foodFor'],
+      calories: map['calories'],
+      proteins: map['proteins'],
+      carbs: map['carbs'],
+      fats: map['fats'],
     );
   }
 }
